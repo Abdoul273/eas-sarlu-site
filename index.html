@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E.A.S Sarlu — Télécharger</title>
+<meta name="description" content="E.A.S Sarlu : l'application de gestion du magasin de matériaux de construction. Stock, ventes, factures, clients et finances, même sans Internet.">
+<meta name="theme-color" content="#002366">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta property="og:title" content="E.A.S Sarlu — Télécharger l'application">
+<meta property="og:description" content="Stock, ventes, factures et finances du magasin, dans votre poche, même hors ligne.">
+<meta property="og:image" content="icon-512.png">
+<style>
+  :root{
+    --deep:#001743; --navy:#002366; --navy-light:#0B3A8C;
+    --orange:#E85D04; --orange-dark:#C23E00; --orange-light:#FFF1E8; --on-orange:#FFFFFF;
+    --bg:#F8F9FB; --surface:#FFFFFF; --text:#1A1D1F; --muted:#6F767E; --line:#E6E8EC;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#101218; --surface:#1A1D24; --text:#F4F4F4; --muted:#AFB3BA; --line:#2A2E36; --orange-light:rgba(232,93,4,.16); --orange-dark:#FF8A3D; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Inter,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .hero{background:linear-gradient(135deg,var(--deep) 0%,var(--navy) 55%,var(--navy-light) 100%);color:#fff;padding:28px 20px 88px;position:relative;overflow:hidden}
+  .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.06)}
+  .hero::before{width:420px;height:420px;right:-160px;top:-200px}
+  .hero::after{width:260px;height:260px;left:-120px;bottom:-80px;background:rgba(232,93,4,.12)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;position:relative}
+  .brand img{width:36px;height:36px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+  .flag{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 10px}
+  .flag i{display:inline-block;width:16px;height:11px;border-radius:2px;background:linear-gradient(90deg,#CE1126 0 33%,#FCD116 33% 66%,#009460 66%)}
+  .hero-body{position:relative;max-width:560px;margin:56px auto 0;text-align:center}
+  .hero-body img{width:112px;height:112px;border-radius:28px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  h1{font-size:30px;line-height:1.15;letter-spacing:-.3px;margin:22px 0 10px;font-weight:800}
+  .lead{color:rgba(255,255,255,.85);font-size:16px;margin:0 auto;max-width:440px}
+  .panel{max-width:560px;margin:-56px auto 0;padding:0 16px 48px;position:relative}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 20px;box-shadow:0 16px 40px rgba(0,0,0,.10)}
+  .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px 18px;border-radius:16px;font-weight:800;font-size:17px;text-decoration:none;border:0;cursor:pointer;transition:transform .12s ease}
+  .btn:active{transform:scale(.98)}
+  .btn-main{background:var(--orange);color:var(--on-orange);box-shadow:0 10px 26px rgba(232,93,4,.35)}
+  .btn-ghost{background:var(--orange-light);color:var(--orange-dark);margin-top:10px;font-size:15px;font-weight:700}
+  .meta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:12px 0 0}
+  .meta span{display:flex;align-items:center;gap:5px}
+  .ios{margin-top:14px;text-align:center;color:var(--muted);font-size:13.5px}
+  h2{font-size:18px;margin:32px 0 12px;letter-spacing:-.2px}
+  .steps{display:grid;gap:10px}
+  .step{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+  .n{flex:0 0 32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px}
+  .step b{display:block;font-size:15px}
+  .step p{margin:2px 0 0;color:var(--muted);font-size:14px}
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .feat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 8px;text-align:center;font-size:12.5px;font-weight:600;line-height:1.25}
+  .feat svg{width:24px;height:24px;color:var(--orange);margin-bottom:6px}
+  details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 16px;margin-bottom:8px}
+  summary{cursor:pointer;padding:14px 0;font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--muted);font-size:20px;font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p,details ol{color:var(--muted);font-size:14px;margin:0 0 14px}
+  details ol{padding-left:20px}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;padding:8px 16px 40px}
+  footer a{color:var(--orange-dark)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="brand">
+    <img src="icon-192.png" alt="">
+    E.A.S Sarlu
+    <span class="flag"><i></i>Guinée</span>
+  </div>
+  <div class="hero-body">
+    <img src="icon-512.png" alt="Icône E.A.S Sarlu">
+    <h1>Tout le magasin,<br>dans votre poche.</h1>
+    <p class="lead">Stock, ventes, factures, clients et finances du dépôt de matériaux : chaque vente est enregistrée, même sans Internet, puis synchronisée automatiquement.</p>
+  </div>
+</header>
+
+<main class="panel">
+  <div class="card">
+    <a class="btn btn-main" href="https://github.com/Abdoul273/eas-sarlu-site/releases/latest/download/eas-sarlu.apk" download>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.1-.17.04-.4-.13-.5a.37.37 0 0 0-.5.13l-1.86 3.22a11.2 11.2 0 0 0-9.9 0L5.19 5.93a.37.37 0 0 0-.5-.13c-.17.1-.23.33-.13.5L6.4 9.48A10.6 10.6 0 0 0 1 18h22a10.6 10.6 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+      Télécharger pour Android
+    </a>
+    <a class="btn btn-ghost" href="#installer">Comment installer ?</a>
+    <div class="meta">
+      <span>Version <b>1.0.0</b></span>
+      <span>≈ 80 Mo</span>
+      <span>Android 5.0+</span>
+    </div>
+    <p class="ios">Réservée au personnel du magasin : un compte est nécessaire pour se connecter.</p>
+  </div>
+
+  <h2>Commencer en 3 étapes</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div><b>Installez l'application</b><p>Avec le bouton ci-dessus, puis ouvrez-la.</p></div></div>
+    <div class="step"><div class="n">2</div><div><b>Connectez-vous</b><p>Avec l'identifiant et le mot de passe que le gérant vous a remis.</p></div></div>
+    <div class="step"><div class="n">3</div><div><b>Travaillez normalement</b><p>Ventes, stock, factures : tout est enregistré sur le téléphone et envoyé au serveur dès que le réseau revient.</p></div></div>
+  </div>
+
+  <h2>Ce que fait l'application</h2>
+  <div class="feats">
+    <div class="feat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1 1.1 2 2 2h14c.9 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-1-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4h16v3z"/></svg>Stock en temps réel</div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42a.25.25 0 0 1-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>Ventes &amp; caisse</div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>Factures &amp; proformas</div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>Clients &amp; fournisseurs</div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>Rapports &amp; finances</div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>Assistant vocal IA</div>
+  </div>
+
+  <h2 id="installer">Questions fréquentes</h2>
+  <details open>
+    <summary>Comment installer l'application ?</summary>
+    <ol>
+      <li>Touchez « Télécharger pour Android » puis ouvrez le fichier <b>eas-sarlu.apk</b> (barre de notifications ou dossier Téléchargements).</li>
+      <li>Si le téléphone affiche « Pour votre sécurité… », touchez <b>Paramètres</b> puis autorisez <b>Chrome</b> (ou votre navigateur) à installer des applications.</li>
+      <li>Revenez en arrière et touchez <b>Installer</b>.</li>
+    </ol>
+  </details>
+  <details>
+    <summary>Et si je n'ai pas de réseau ?</summary>
+    <p>Continuez à travailler. Les ventes, dépenses et mouvements de stock sont gardés sur le téléphone, puis envoyés au serveur automatiquement dès que la connexion revient. Un badge indique ce qui reste à synchroniser.</p>
+  </details>
+  <details>
+    <summary>Pourquoi l'application n'est pas sur le Play Store ?</summary>
+    <p>Elle est distribuée directement ici, pour le personnel du magasin. Ne l'installez que depuis cette page ou depuis un lien envoyé par le gérant.</p>
+  </details>
+  <details>
+    <summary>Mes données sont-elles en sécurité ?</summary>
+    <p>Chaque compte a ses propres droits : un vendeur ne voit pas forcément les finances. L'application peut être verrouillée sur le téléphone et les données sont sauvegardées sur le serveur.</p>
+  </details>
+  <details>
+    <summary>Je change de téléphone, comment faire ?</summary>
+    <p>Installez l'application sur le nouveau téléphone et connectez-vous avec le même compte. Pensez à laisser l'ancien téléphone se synchroniser avant, pour ne rien perdre des opérations faites hors ligne.</p>
+  </details>
+</main>
+
+<footer>E.A.S Sarlu · Guinée · <a href="mailto:abdoulgoudoussediallo25@gmail.com">Contact</a></footer>
+</body>
+</html>
