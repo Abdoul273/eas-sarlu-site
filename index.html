@@ -66,6 +66,51 @@
   details[open] summary::after{content:"–"}
   details p,details ol{color:var(--muted);font-size:14px;margin:0 0 14px}
   details ol{padding-left:20px}
+
+  /* ── En direct : téléchargements et note ── */
+  .live{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+  .pill{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:700;text-decoration:none;color:var(--text)}
+  .pill small{color:var(--muted);font-weight:600;font-size:12.5px}
+  .dot{width:8px;height:8px;border-radius:50%;background:#16A34A;box-shadow:0 0 0 0 rgba(22,163,74,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.55)}70%{box-shadow:0 0 0 9px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+  .num{font-variant-numeric:tabular-nums}
+  .bump{animation:bump .6s ease}
+  @keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.25);color:var(--orange)}100%{transform:scale(1)}}
+  .star{color:#F5A524}
+  /* ── Avis ── */
+  .rev-head{display:flex;gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px}
+  .rev-score{text-align:center;min-width:92px}
+  .rev-score .big{font-size:44px;font-weight:800;line-height:1;letter-spacing:-1px}
+  .rev-score .stars{font-size:17px;letter-spacing:1px;margin-top:4px}
+  .rev-score small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+  .bars{flex:1;display:grid;gap:5px}
+  .bar{display:grid;grid-template-columns:14px 1fr 28px;gap:8px;align-items:center;font-size:12.5px;color:var(--muted)}
+  .bar i{display:block;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+  .bar i b{display:block;height:100%;background:#F5A524;border-radius:99px;width:0;transition:width .6s ease}
+  .form{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px}
+  .form h3{margin:0 0 4px;font-size:16px}
+  .form p.sub{margin:0 0 12px;color:var(--muted);font-size:13.5px}
+  .pick{display:flex;gap:4px;margin-bottom:12px}
+  .pick button{background:none;border:0;padding:2px;font-size:34px;line-height:1;cursor:pointer;color:var(--line);transition:transform .1s}
+  .pick button.on{color:#F5A524}
+  .pick button:active{transform:scale(.9)}
+  .form input,.form textarea{width:100%;font:inherit;font-size:15px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+  .form textarea{min-height:92px;resize:vertical}
+  .form input:focus,.form textarea:focus{outline:2px solid var(--orange);border-color:transparent}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .msg{font-size:13.5px;margin:4px 0 10px;min-height:1em}
+  .msg.err{color:#DC2626}.msg.ok{color:#16A34A}
+  .list{display:grid;gap:10px;margin-top:12px}
+  .rev{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;animation:in .4s ease}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .rev .top{display:flex;align-items:center;gap:10px}
+  .av{flex:0 0 34px;height:34px;border-radius:50%;background:var(--orange-light);color:var(--orange-dark);display:grid;place-items:center;font-weight:800}
+  .rev .who{font-weight:700;font-size:14.5px}
+  .rev .when{color:var(--muted);font-size:12px}
+  .rev .stars{margin-left:auto;font-size:14px;letter-spacing:1px;white-space:nowrap}
+  .rev p{margin:8px 0 0;font-size:14.5px;white-space:pre-line;word-wrap:break-word}
+  .empty{text-align:center;color:var(--muted);font-size:14px;padding:18px}
+  .more{margin-top:10px}
   footer{text-align:center;color:var(--muted);font-size:12.5px;padding:8px 16px 40px}
   footer a{color:var(--orange-dark)}
 </style>
@@ -96,6 +141,10 @@
       <span>≈ 80 Mo</span>
       <span>Android 5.0+</span>
     </div>
+    <div class="live" aria-live="polite">
+      <span class="pill" title="Mis à jour en direct"><span class="dot"></span><span><b class="num" id="dl">—</b> téléchargements</span></span>
+      <a class="pill" href="#avis"><span class="star">★</span><span><b class="num" id="note">—</b> <small id="nbavis">avis</small></span></a>
+    </div>
     <p class="notice"><b>Vous aviez l'ancienne version (E.A.S Sarlu) ?</b> Désinstallez-la d'abord, puis installez celle-ci. Les anciens comptes n'existent plus : créez votre boutique à l'ouverture de l'application.</p>
     <p class="ios">Gratuit · Pour tout commerce : boutique, quincaillerie, alimentation, vêtements, téléphonie…</p>
   </div>
@@ -120,6 +169,36 @@
     <div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></span><div><b>Votre équipe, vos règles</b><p>Chaque membre ne fait que ce que vous autorisez : vendre, voir les marges, gérer le stock…</p></div></div>
     <div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18 1.5 1.5 0 0 0 1.1-2.52 1.5 1.5 0 0 1 1.13-2.48H16a5 5 0 0 0 5-5c0-4.42-4.03-8-9-8zM6.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></span><div><b>Factures à votre image</b><p>Votre logo, votre signature, votre cachet et votre couleur sur chaque facture.</p></div></div>
   </div>
+
+  <h2 id="avis">Avis des utilisateurs</h2>
+  <div class="rev-head">
+    <div class="rev-score">
+      <div class="big num" id="moy">—</div>
+      <div class="stars star" id="moyStars">☆☆☆☆☆</div>
+      <small id="tot">aucun avis</small>
+    </div>
+    <div class="bars" id="bars"></div>
+  </div>
+
+  <form class="form" id="form" novalidate>
+    <h3>Donnez votre avis</h3>
+    <p class="sub">Votre note aide les autres commerçants à choisir.</p>
+    <div class="pick" id="pick" role="radiogroup" aria-label="Note">
+      <button type="button" data-n="1" aria-label="1 étoile">★</button>
+      <button type="button" data-n="2" aria-label="2 étoiles">★</button>
+      <button type="button" data-n="3" aria-label="3 étoiles">★</button>
+      <button type="button" data-n="4" aria-label="4 étoiles">★</button>
+      <button type="button" data-n="5" aria-label="5 étoiles">★</button>
+    </div>
+    <input id="nom" maxlength="40" placeholder="Votre prénom ou votre boutique (facultatif)" autocomplete="name">
+    <textarea id="texte" maxlength="600" placeholder="Qu'est-ce qui vous plaît ? Qu'est-ce qui manque ?"></textarea>
+    <input class="hp" id="site" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="msg" id="msg"></div>
+    <button class="btn btn-main" id="envoyer" type="submit">Publier mon avis</button>
+  </form>
+
+  <div class="list" id="list"></div>
+  <button class="btn btn-ghost more" id="more" type="button" hidden>Voir plus d'avis</button>
 
   <h2 id="installer">Questions fréquentes</h2>
   <details open>
@@ -157,5 +236,162 @@
 </main>
 
 <footer>Gestion Boutique · Guinée · <a href="mailto:abdoulgoudoussediallo25@gmail.com">Contact</a></footer>
+<script>
+(() => {
+  const API = 'https://wqrfmmtavilyrnbjzhow.supabase.co/functions/v1/boutique/site';
+  const INTERVALLE = 15000;
+  const $ = (id) => document.getElementById(id);
+  const fmt = new Intl.NumberFormat('fr-FR');
+  let dlAffiche = null, note = 0, avis = [], montres = 6, minuteur = null;
+
+  const etoiles = (n) => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
+  const quand = (iso) => {
+    const s = (Date.now() - new Date(iso)) / 1000;
+    if (s < 60) return "à l'instant";
+    if (s < 3600) return `il y a ${Math.floor(s / 60)} min`;
+    if (s < 86400) return `il y a ${Math.floor(s / 3600)} h`;
+    if (s < 86400 * 30) return `il y a ${Math.floor(s / 86400)} j`;
+    return new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
+
+  // Le nombre monte en comptant, et ne descend jamais à l'écran.
+  function afficherTelechargements(n) {
+    const el = $('dl');
+    if (dlAffiche === null) { dlAffiche = n; el.textContent = fmt.format(n); return; }
+    if (n <= dlAffiche) return;
+    const depart = dlAffiche, t0 = performance.now(), duree = 900;
+    dlAffiche = n;
+    el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');
+    const pas = (t) => {
+      const k = Math.min(1, (t - t0) / duree);
+      el.textContent = fmt.format(Math.round(depart + (n - depart) * k));
+      if (k < 1) requestAnimationFrame(pas);
+    };
+    requestAnimationFrame(pas);
+  }
+
+  function carte(a) {
+    const d = document.createElement('div');
+    d.className = 'rev';
+    const top = document.createElement('div'); top.className = 'top';
+    const av = document.createElement('span'); av.className = 'av';
+    av.textContent = (a.nom || '?').trim().charAt(0).toUpperCase();
+    const id = document.createElement('div');
+    const who = document.createElement('div'); who.className = 'who'; who.textContent = a.nom || 'Anonyme';
+    const when = document.createElement('div'); when.className = 'when'; when.textContent = quand(a.date);
+    id.append(who, when);
+    const st = document.createElement('span'); st.className = 'stars star'; st.textContent = etoiles(a.note);
+    top.append(av, id, st);
+    const p = document.createElement('p'); p.textContent = a.texte;
+    d.append(top, p);
+    return d;
+  }
+
+  function afficherAvis(e) {
+    const { total, moyenne, repartition, derniers } = e.avis;
+    const moy = total ? moyenne.toLocaleString('fr-FR', { minimumFractionDigits: 1 }) : '—';
+    $('note').textContent = moy;
+    $('nbavis').textContent = total ? `(${fmt.format(total)} avis)` : 'aucun avis';
+    $('moy').textContent = moy;
+    $('moyStars').textContent = etoiles(moyenne);
+    $('tot').textContent = total ? `${fmt.format(total)} avis` : 'aucun avis';
+    const bars = $('bars');
+    if (!bars.children.length) {
+      for (let n = 5; n >= 1; n--) {
+        const r = document.createElement('div'); r.className = 'bar';
+        r.innerHTML = `<span>${n}</span><i><b id="b${n}"></b></i><span id="c${n}">0</span>`;
+        bars.append(r);
+      }
+    }
+    for (let n = 1; n <= 5; n++) {
+      $('b' + n).style.width = total ? `${(repartition[n] / total) * 100}%` : '0';
+      $('c' + n).textContent = repartition[n];
+    }
+    // Ne redessine la liste que si elle a changé : on ne fait pas sauter la
+    // lecture de quelqu'un toutes les 15 secondes.
+    const cle = derniers.map((a) => a.id).join();
+    if (cle !== avis.map((a) => a.id).join()) { avis = derniers; dessinerListe(); }
+  }
+
+  function dessinerListe() {
+    const l = $('list'); l.replaceChildren();
+    if (!avis.length) {
+      const v = document.createElement('div'); v.className = 'empty';
+      v.textContent = 'Soyez le premier à donner votre avis !';
+      l.append(v);
+    }
+    avis.slice(0, montres).forEach((a) => l.append(carte(a)));
+    $('more').hidden = avis.length <= montres;
+  }
+  $('more').onclick = () => { montres += 10; dessinerListe(); };
+
+  async function rafraichir() {
+    try {
+      const r = await fetch(`${API}/etat`, { cache: 'no-store' });
+      if (!r.ok) return;
+      const e = await r.json();
+      afficherTelechargements(e.telechargements);
+      afficherAvis(e);
+    } catch (_) { /* hors ligne : on garde l'affichage, on réessaiera */ }
+  }
+  function planifier() {
+    clearInterval(minuteur);
+    if (document.visibilityState === 'visible') minuteur = setInterval(rafraichir, INTERVALLE);
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') rafraichir();
+    planifier();
+  });
+
+  // Un clic sur « Télécharger » se voit tout de suite ; le compteur officiel
+  // (GitHub) confirme au rafraîchissement suivant.
+  const bouton = document.querySelector('.btn-main[href]');
+  if (bouton) bouton.addEventListener('click', () => {
+    if (dlAffiche !== null) afficherTelechargements(dlAffiche + 1);
+    setTimeout(rafraichir, 35000);
+  });
+
+  // ── Formulaire ──
+  const pick = $('pick');
+  const peindre = (n) => pick.querySelectorAll('button').forEach((b) =>
+    b.classList.toggle('on', Number(b.dataset.n) <= n));
+  pick.querySelectorAll('button').forEach((b) => {
+    b.onclick = () => { note = Number(b.dataset.n); peindre(note); };
+    b.onmouseenter = () => peindre(Number(b.dataset.n));
+  });
+  pick.onmouseleave = () => peindre(note);
+
+  const dejaFait = () => { try { return localStorage.getItem('avisDonne') === '1'; } catch (_) { return false; } };
+  if (dejaFait()) {
+    $('form').innerHTML = '<h3>Merci pour votre avis !</h3><p class="sub" style="margin:0">Il est publié ci-dessous.</p>';
+  }
+
+  $('form').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const msg = $('msg');
+    msg.className = 'msg';
+    if (!note) { msg.textContent = 'Touchez les étoiles pour choisir une note.'; msg.classList.add('err'); return; }
+    if ($('texte').value.trim().length < 3) { msg.textContent = "Écrivez quelques mots sur l'application."; msg.classList.add('err'); return; }
+    const btn = $('envoyer'); btn.disabled = true; btn.textContent = 'Publication…';
+    try {
+      const r = await fetch(`${API}/avis`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ note, nom: $('nom').value, texte: $('texte').value, site: $('site').value }),
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(d.error || 'Publication impossible, réessayez.');
+      try { localStorage.setItem('avisDonne', '1'); } catch (_) {}
+      if (d.etat) afficherAvis(d.etat);
+      $('form').innerHTML = '<h3>Merci pour votre avis !</h3><p class="sub" style="margin:0">Il est publié ci-dessous.</p>';
+    } catch (e) {
+      msg.textContent = e.message; msg.classList.add('err');
+      btn.disabled = false; btn.textContent = 'Publier mon avis';
+    }
+  });
+
+  rafraichir();
+  planifier();
+})();
+</script>
 </body>
 </html>
