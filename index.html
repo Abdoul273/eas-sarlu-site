@@ -43,6 +43,8 @@
   .btn-ghost{background:var(--orange-light);color:var(--orange-dark);margin-top:10px;font-size:15px;font-weight:700}
   .meta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:12px 0 0}
   .meta span{display:flex;align-items:center;gap:5px}
+  .notice{margin-top:14px;background:var(--orange-light);color:var(--text);border-left:4px solid var(--orange);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.45}
+  .notice b{color:var(--orange-dark)}
   .ios{margin-top:14px;text-align:center;color:var(--muted);font-size:13.5px}
   h2{font-size:18px;margin:32px 0 12px;letter-spacing:-.2px}
   .steps{display:grid;gap:10px}
@@ -90,6 +92,7 @@
       <span>≈ 80 Mo</span>
       <span>Android 5.0+</span>
     </div>
+    <p class="notice"><b>Vous aviez déjà l'application ?</b> Désinstallez d'abord l'ancienne version, sinon le téléphone refusera l'installation. Avant de désinstaller, ouvrez l'ancienne application avec du réseau pour que tout soit envoyé au serveur.</p>
     <p class="ios">Réservée au personnel du magasin : un compte est nécessaire pour se connecter.</p>
   </div>
 
@@ -118,6 +121,10 @@
       <li>Si le téléphone affiche « Pour votre sécurité… », touchez <b>Paramètres</b> puis autorisez <b>Chrome</b> (ou votre navigateur) à installer des applications.</li>
       <li>Revenez en arrière et touchez <b>Installer</b>.</li>
     </ol>
+  </details>
+  <details>
+    <summary>« Application non installée » : que faire ?</summary>
+    <p>Une ancienne version est déjà sur le téléphone et elle n'est pas compatible avec la nouvelle. Ouvrez d'abord l'ancienne application avec du réseau et attendez que le badge de synchronisation disparaisse. Désinstallez-la ensuite (appui long sur l'icône puis <b>Désinstaller</b>) et installez la nouvelle version. Reconnectez-vous avec le même compte : vos données reviennent depuis le serveur.</p>
   </details>
   <details>
     <summary>Et si je n'ai pas de réseau ?</summary>
